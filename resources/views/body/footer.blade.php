@@ -100,6 +100,11 @@
     <a href="#" class="btn btn-icon btn-pills btn-primary back-to-top" id="back-to-top"><i data-feather="arrow-up" class="icons"></i></a>
     <!-- Back to top -->
 
+    <!-- WhatsApp Float Button -->
+    <a href="https://wa.me/923088551111" class="whatsapp-float" target="_blank">
+        <i class="uil uil-whatsapp"></i>
+    </a>
+    <!-- WhatsApp Float Button -->
 
     <!-- Modal -->
     <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
@@ -112,6 +117,7 @@
                 <div class="modal-body">
                     <form method="POST" action="{{ route('submit.demo') }}" id="demoForm" class="demo-form">
                         @csrf
+                        
                         <input type="hidden" name="recaptcha_response" id="recaptchaResponseDemo">
                         
                         @if(session('error'))
@@ -159,6 +165,12 @@
                                 </div>
                             </div>
 
+                            <div class="col-lg-12 mt-2 mb-5">
+                                <div class="d-grid">
+                                    {!! htmlFormSnippet() !!}
+                                </div>
+                            </div>
+
                             <div class="col-lg-12 mt-2 mb-0">
                                 <div class="d-grid">
                                     <button class="btn btn-primary" type="submit">Submit Demo Request</button>
@@ -189,19 +201,7 @@
     <script src="{{asset('assest/js/app.js')}}"></script>
 
     <script>
-        grecaptcha.ready(function() {
-            document.getElementById('demoForm').addEventListener('submit', function(event) {
-                event.preventDefault();
-                grecaptcha.execute('{{ env('RECAPTCHA_SITE_KEY') }}', {action: 'submit'}).then(function(token) {
-                    var recaptchaResponse = document.createElement('input');
-                    recaptchaResponse.setAttribute('type', 'hidden');
-                    recaptchaResponse.setAttribute('name', 'recaptcha_response');
-                    recaptchaResponse.setAttribute('value', token);
-                    document.getElementById('demoForm').appendChild(recaptchaResponse);
-                    document.getElementById('demoForm').submit(); // Submit the form
-                });
-            });
-        });
+        
 
         function playYouTubeVideo(event, videoId) {
                 event.preventDefault();

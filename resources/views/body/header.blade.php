@@ -21,10 +21,11 @@
         <link href="{{asset('assest/css/materialdesignicons.min.css')}}" rel="stylesheet" type="text/css" />
         <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.8/css/line.css">
         <!-- Main Css -->
-        <link href="{{asset('assest/css/style.css')}}" rel="stylesheet" type="text/css" id="theme-opt" />
+        <link href="{{asset('assest/css/style.min.css')}}" rel="stylesheet" type="text/css" id="theme-opt" />
         <link href="{{asset('assest/css/colors/default.css')}}" rel="stylesheet" id="color-opt">
 
-        <script src="https://www.google.com/recaptcha/api.js?render={{ env('RECAPTCHA_SITE_KEY') }}"></script>
+
+        {!! htmlScriptTagJsApi() !!}
 
         
     </head>
