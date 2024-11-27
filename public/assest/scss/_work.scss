@@ -1,0 +1,427 @@
+//
+// _work.scss
+//
+.filter-box {
+    display: none;
+    &.show {
+        display: block;
+    }
+}
+.container-filter {
+    li {
+        padding: 0px 15px;
+        
+            font-size: 16px; 
+            font-weight: 600;
+            letter-spacing: 0.8px;
+            cursor: pointer;
+            line-height: 34px;
+            transition: all 0.5s ease;
+            color: $muted !important;
+                &.active,
+                &:hover {
+                    color: $primary !important;
+                }
+        
+    }
+    .categories {
+        &:after {
+            content: "";
+            position: absolute;
+            height: 0;
+            width: 0;
+            background-color: rgba($primary, 0.2);
+            right: 0;
+            left: 0;
+            bottom: 9px;
+            z-index: -1;
+            transition: all 0.5s ease;
+        }
+        &.active,
+        &:hover {
+            &:after {
+                width: 100%;
+                right: auto;
+                left: 0;
+                height: 6px;
+            }
+        }
+    }
+}
+
+.spacing {
+    padding: 7px;
+}
+
+@each $name,
+$value in $colors {
+    .work-container { 
+        &.work-#{$name} {
+            .content {
+                a {
+                    transition: all 0.5s ease;
+                    &.title,
+                    &.tag,
+                    &.author,
+                    &.link {
+                        &:hover {
+                            color: $value !important;
+                        }
+                    }
+                }
+            }
+            &.work-border {
+                border-top: 4px solid $value !important;
+            }
+        }
+    }
+}
+
+.work-container {
+    &.work-border {
+        transition: all 0.3s ease;
+        &:hover {
+            transform: translateY(-10px);
+        }
+    }
+}
+
+.spacing{
+    padding: 10px;
+}
+
+//Job / Careers
+.job-catagories {
+    &:hover {
+        @each $name, $value in $colors {
+            &.bg-catagory-#{$name} {
+                background-color: #{$value} !important;
+            }
+        }
+    }
+}
+
+.job-catagories {
+    .title,
+    .sub-title,
+    .icons {
+        transition: all 0.5s ease;
+    }
+    .icons {
+        position: absolute;
+        top: 24px;
+        right: 24px;
+        opacity: 0.1;
+    }
+    &:hover {
+        box-shadow: $shadow-md !important;
+        transform: scale(1.05) translateY(-10px);
+        .title {
+            color: $white !important;
+        }
+        .sub-title {
+            color: rgba($white, 0.5) !important;
+        }
+        .icons {
+            color: $white !important;
+        }
+    }
+}
+
+.feature-company {
+    transition: all 0.5s ease;
+    &:hover {
+        box-shadow: $shadow-lg !important;
+        .company-name {
+            color: $primary !important;
+        }
+    }
+}
+
+.job-vacancy {
+    @each $name,
+    $value in $colors {
+        &.job-#{$name} {
+            &:hover {
+                background: rgba($value, 0.05) !important;
+                .job-caragory,
+                .icon {
+                    color: $value !important;
+                }
+            }
+        }
+    }
+}
+
+.job-vacancy {
+    transition: all 0.5s ease;
+    .job-caragory,
+    .icon {
+        transition: all 0.5s ease;
+    }
+}
+
+
+
+.portfolio{
+    font-family: $font-family-secondary;
+        .port-img {
+            transition: .5s;
+        }
+
+    /*Start-modern-portfolio*/
+    &.portfolio-modern {
+
+        .overlay-work{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        .content{
+            transition: .3s;
+        
+            &::before{
+                content: '';
+                position: absolute;
+            }
+        
+            .tag{
+                color: $white;
+                transition: .5s;
+                opacity: 0;
+            }
+        
+            .title{
+                color: $white;
+                opacity: 0;
+        
+                &:hover{
+                    color: $primary !important;
+                }
+            }
+        }
+
+        &:hover{
+            .overlay-work{
+                backdrop-filter: blur(3px);
+                background-color: rgba(0,0,0,.3);
+            }
+            .content{
+        
+                .tag{
+                    opacity: 1;
+                    transition: .5s;
+                    transition-delay: .3s;
+                }
+                .title{
+                    opacity: 1;
+                    transition: .5s;
+                    transition-delay: .3s;
+                }
+            }
+        }
+
+    } /*End-modern-portfolio*/
+
+    /*Strat-grid-portfolio*/
+    &.portfolio-grid{
+
+        .port-img{
+            transition: all 0.5s ease-in-out;
+        }
+
+        .overlay-work{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            opacity: 0;
+        }
+
+        .content {
+            transition: all 0.3s ease-in-out;
+    
+            .tag {
+                transform: translateX(-40px);
+                color: #fff;
+                opacity: 0;
+                transition: all 0.3s ease-out;
+            }
+    
+            .title {
+                transform: translateX(40px);
+                color: #fff;
+                opacity: 0;
+                transition: all 0.3s ease-out;
+    
+                &:hover {
+                    color: $primary !important;
+                    cursor: pointer;
+                }
+            }
+        }
+
+        &:hover {
+
+            .overlay-work{ 
+                opacity: 0.9;
+    
+            }
+            .port-img{
+                transform: scale(1.2) rotate(-5deg);
+            }
+            .content {
+                
+                h6 {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+    
+                a {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+        }
+    }   /*End-grid-portfolio*/
+    
+
+
+    /*Start-masonry-portfolio*/
+
+    &.portfolio-masonry{
+        .content{
+            transform: scale(0);
+            }
+            .tag{
+                opacity: 0;
+                color: $white;
+            }
+            .title{
+                opacity: 0;
+                color: $white;
+
+                &:hover{
+                    transition: all .5s;
+                    color: $primary !important;
+                }
+            }
+            
+        }
+
+        .overlay-work{
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+
+        
+        .work-icon {
+            i {
+                width: 40px;
+                height: 40px;
+                background-color: $white;
+                color: $primary;
+                border-radius: 50%;
+                opacity: 0;
+                transform: translateY(-40px);
+                transition: all .5s;
+
+                &:hover{
+                    transition: all .5s;
+                    background-color: $primary;
+                    color: $white !important;
+                }
+
+                &::before{
+                    padding: 12px;
+                }
+            }
+        }
+
+        &:hover {
+
+            .content{
+                transform: scale(1);
+                transition-duration: 0.7s;
+                .tag{
+                    opacity: 1;
+
+                }
+                .title{
+                    opacity: 1;
+                }
+            }
+
+            .overlay-work{
+                transition: all .5s;
+                background-color: rgba(0,0,0,.3);
+            }
+
+            .work-icon{
+                i{
+                    transform: translateY(0px);
+                    transition-delay: .2s;
+                    opacity: 1;
+                }
+            }
+        }
+    }
+
+.spacing {
+    padding: 7px;
+}
+
+
+
+
+/*********************************/
+/*         Tobii Lightbox        */
+/*===============================*/
+//Tobii Lighbox
+.tobii>button.tobii__close svg,
+.tobii>button.tobii__prev svg, 
+.tobii>button.tobii__next svg,
+.tobii__btn svg {
+    height: 36px;
+    width: auto;
+    transform: scale(1) !important;
+}
+.tobii__counter {
+    font-size: 16px;
+}
+.tobii-zoom {
+    display: block !important;
+}
+.tobii-zoom__icon {
+    display: none;
+}
+#grid {
+    padding: 0 !important;
+}
+
+//video iframe
+@media (max-width: 640px) {
+    [data-type] iframe, [data-type] video {
+        width: 500px;
+        height: 300px;
+    }
+}
+@media (max-width: 425px) {
+    [data-type] iframe, [data-type] video {
+        width: 360px;
+        height: 260px;
+    }
+}
+@media (max-width: 375px) {
+    [data-type] iframe, [data-type] video {
+        width: 100%;
+        height: auto;
+    }
+}
